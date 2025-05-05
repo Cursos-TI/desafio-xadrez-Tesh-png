@@ -1,52 +1,84 @@
 #include <stdio.h>
 
+// Quantidade de movimentos por peça
+const int passosTorre = 5;
+const int passosBispo = 5;
+const int passosRainha = 8;
+
+// ----------------- FUNÇÕES RECURSIVAS -----------------
+
+// Torre: anda para a direita recursivamente
+void torreParaDireita(int restante) {
+    if (restante <= 0) return;
+    printf("→ Andou para a Direita\n");
+    torreParaDireita(restante - 1);
+}
+
+// Bispo: desloca-se em diagonal superior direita recursivamente
+void bispoDiagonalSuperiorDireita(int restante) {
+    if (restante <= 0) return;
+    printf("↗ Subiu na Diagonal Direita\n");
+    bispoDiagonalSuperiorDireita(restante - 1);
+}
+
+// Rainha: desloca-se para a esquerda usando recursividade
+void rainhaParaEsquerda(int restante) {
+    if (restante <= 0) return;
+    printf("← Andou para a Esquerda\n");
+    rainhaParaEsquerda(restante - 1);
+}
+
+// ----------------- BISPO USANDO LOOPS ANINHADOS -----------------
+
+// Simulação de movimento diagonal inferior esquerda
+void bispoDiagonalInferiorEsquerda(int casas) {
+    printf("Bispo se move na Diagonal Inferior Esquerda:\n");
+    for (int linha = 0; linha < casas; linha++) {
+        for (int coluna = 0; coluna < casas; coluna++) {
+            if (linha == coluna) {
+                printf("↙ Passo na Diagonal\n", linha, coluna);
+            }
+        }
+    }
+}
+
+// ----------------- CAVALO COM LOOPS COMPLEXOS -----------------
+
+// Simulação do movimento do Cavalo em L
+void cavaloMovimentoL() {
+    // Um único movimento em L: 2 casas para cima, 1 para a direita
+    printf("Cavalo faz movimento em L (2 cima, 1 direita):\n");
+    for (int a = 0; a < 1; a++) {
+        for (int b = 0; b < 1; b++) {
+            printf("↑ Subiu\n");
+            printf("↑ Subiu\n");
+            printf("→ Direita\n");
+        }
+    }
+}
+
+// ----------------- FUNÇÃO PRINCIPAL -----------------
+
 int main() {
-    // Torre: deslocamento horizontal para a direita em 5 passos
-    // Estrutura de repetição: for (ideal para contagens definidas)
-    printf("Torre se move 5 casas para a direita:\n");
-    for (int passo = 0; passo < 5; passo++) {
-        printf("-> Direita\n");
-    }
-
+    printf("=== Movimento da Torre ===\n");
+    torreParaDireita(passosTorre);
     printf("\n");
 
-    // Bispo: deslocamento diagonal (cima e direita) em 5 passos
-    // Estrutura de repetição: while (ideal quando a condição pode mudar)
-    printf("Bispo se move 5 casas na diagonal superior direita:\n");
-    int contador = 0;
-    while (contador < 5) {
-        printf("\↗ Diagonal Cima-Direita\n");
-        contador++;
-    }
-
+    printf("=== Movimento do Bispo (Cima Direita) ===\n");
+    bispoDiagonalSuperiorDireita(passosBispo);
     printf("\n");
 
-    // Rainha: deslocamento horizontal para a esquerda em 8 passos
-    // Estrutura de repetição: do-while (executa pelo menos uma vez)
-    printf("Rainha se move 8 casas para a esquerda:\n");
-    int passos = 0;
-    do {
-        printf("<- Esquerda\n");
-        passos++;
-    } while (passos < 8);
-
+    printf("=== Movimento da Rainha (Esquerda) ===\n");
+    rainhaParaEsquerda(passosRainha);
     printf("\n");
 
-    // Cavalo: movimento em “L” (2 para baixo e 1 para a esquerda)
-    // Estruturas combinadas: for e while
-    printf("Cavalo se move em L: duas casas para baixo e uma para a esquerda:\n");
+    printf("=== Movimento do Bispo (Inferior Esquerda - com Loops) ===\n");
+    bispoDiagonalInferiorEsquerda(passosBispo);
+    printf("\n");
 
-    // Primeiro: deslocamento vertical (baixo)
-    for (int i = 0; i < 2; i++) {
-        printf("↓ Baixo\n");
-    }
-
-    // Depois: deslocamento horizontal (esquerda)
-    int esquerda = 0;
-    while (esquerda < 1) {
-        printf("← Esquerda\n");
-        esquerda++;
-    }
+    printf("=== Movimento do Cavalo (em L) ===\n");
+    cavaloMovimentoL();
+    printf("\n");
 
     return 0;
 }
