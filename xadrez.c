@@ -1,60 +1,52 @@
-/*#include <stdio.h>
-
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-    return 0;
-}*/
-
 #include <stdio.h>
 
 int main() {
-    // Movimento da Torre com estrutura FOR
-    printf("Movimento da Torre:\n");
-    for (int i = 1; i <= 5; i++) {
-        printf("Direita\n");
+    // Torre: deslocamento horizontal para a direita em 5 passos
+    // Estrutura de repetição: for (ideal para contagens definidas)
+    printf("Torre se move 5 casas para a direita:\n");
+    for (int passo = 0; passo < 5; passo++) {
+        printf("-> Direita\n");
     }
 
-    // Movimento do Bispo com estrutura WHILE
-    printf("\nMovimento do Bispo:\n");
-    int j = 1;
-    while (j <= 5) {
-        printf("Cima Direita\n");
-        j++;
+    printf("\n");
+
+    // Bispo: deslocamento diagonal (cima e direita) em 5 passos
+    // Estrutura de repetição: while (ideal quando a condição pode mudar)
+    printf("Bispo se move 5 casas na diagonal superior direita:\n");
+    int contador = 0;
+    while (contador < 5) {
+        printf("\↗ Diagonal Cima-Direita\n");
+        contador++;
     }
 
-    // Movimento da Rainha com estrutura DO-WHILE
-    printf("\nMovimento da Rainha:\n");
-    int k = 1;
+    printf("\n");
+
+    // Rainha: deslocamento horizontal para a esquerda em 8 passos
+    // Estrutura de repetição: do-while (executa pelo menos uma vez)
+    printf("Rainha se move 8 casas para a esquerda:\n");
+    int passos = 0;
     do {
-        printf("Esquerda\n");
-        k++;
-    } while (k <= 8);
+        printf("<- Esquerda\n");
+        passos++;
+    } while (passos < 8);
+
+    printf("\n");
+
+    // Cavalo: movimento em “L” (2 para baixo e 1 para a esquerda)
+    // Estruturas combinadas: for e while
+    printf("Cavalo se move em L: duas casas para baixo e uma para a esquerda:\n");
+
+    // Primeiro: deslocamento vertical (baixo)
+    for (int i = 0; i < 2; i++) {
+        printf("↓ Baixo\n");
+    }
+
+    // Depois: deslocamento horizontal (esquerda)
+    int esquerda = 0;
+    while (esquerda < 1) {
+        printf("← Esquerda\n");
+        esquerda++;
+    }
 
     return 0;
 }
